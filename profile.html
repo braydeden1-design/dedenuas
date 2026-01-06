@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery Wisata Kabupaten Kuningan</title>
+    <title>Profil Kabupaten Kuningan</title>
 
     <link rel="stylesheet" href="nav.css">
 
@@ -17,7 +17,8 @@
         }
 
         body {
-            background: linear-gradient(to bottom, #e8f5e9, #ffffff);
+            background-color: #f5f7fa;
+            color: #333;
             transition: opacity 0.4s ease;
         }
 
@@ -104,7 +105,7 @@
             width: 100%;
             height: 65vh;
             min-height: 380px;
-            background-image: url("gl.jpg");
+            background-image: url("br.jpeg");
             background-size: cover;
             background-position: center;
             display: flex;
@@ -125,8 +126,8 @@
 
         .header-content {
             position: relative;
-            color: white;
             text-align: center;
+            color: white;
             padding: 20px;
             animation: fadeUp 1.2s ease;
         }
@@ -142,34 +143,69 @@
             }
         }
 
-        .carousel {
-            max-width: 1000px;
-            margin: 50px auto;
-            position: relative;
+        .section {
+            padding: 50px 10%;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
         }
 
-        .slides {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .slides img {
+        .card img {
             width: 100%;
-            height: 450px;
+            height: 180px;
             object-fit: cover;
-            flex-shrink: 0;
         }
 
-        .caption {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+        .card-content {
             padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        .card-content h3 {
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 12px 25px;
+            background-color: #2e7d32;
             color: white;
+            text-decoration: none;
+            border-radius: 30px;
         }
 
         footer {
@@ -189,7 +225,7 @@
 
 <body>
 
-<nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-left">
             <span>Kuningan</span>
             <span class="nav-clock" id="clock">00:00:00</span>
@@ -207,32 +243,72 @@
 
     <header class="header">
         <div class="header-content">
-            <h1>Gallery Wisata Kabupaten Kuningan</h1>
-            <h2>Pesona Alam & Sejarah Kuningan</h2>
-            <p>Kabupaten Kuningan menyimpan keindahan alam yang luar biasa.</p>
+            <h1>Profil Wisata Kabupaten Kuningan</h1>
+            <p>
+                Dari megahnya Gunung Ciremai hingga jernihnya Talaga Biru Cicerem,
+                Kuningan menyuguhkan pesona alam dan sejarah yang tak terlupakan.
+            </p>
         </div>
     </header>
 
-    <div class="carousel">
-        <div class="slides">
-            <img src="crm.jpg" alt="Gunung Ciremai">
-            <img src="jati.jpg" alt="Linggarjati">
-            <img src="hurip.jpg" alt="Sangkanhurip">
-            <img src="darma.jpg" alt="Waduk Darma">
-            <img src="biru.jpg" alt="Talaga Biru Cicerem">
+    <section class="section">
+        <h2>Tentang Kabupaten Kuningan</h2>
+        <p>
+            Kabupaten Kuningan terletak di Jawa Barat dan dikenal dengan udara sejuk,
+            alam yang asri, serta kekayaan wisata alam dan sejarah.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <img src="gn.jpg" alt="Gunung Ciremai">
+                <div class="card-content">
+                    <h3>Gunung Ciremai</h3>
+                    <p>Gunung tertinggi di Jawa Barat dengan panorama menakjubkan.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="gd.jpg" alt="Linggarjati">
+                <div class="card-content">
+                    <h3>Linggarjati</h3>
+                    <p>Situs bersejarah saksi perjuangan kemerdekaan.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="km.jpeg" alt="Sangkanhurip">
+                <div class="card-content">
+                    <h3>Sangkanhurip</h3>
+                    <p>Pemandian air panas alami yang menyegarkan.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="wd.jpg" alt="Waduk Darma">
+                <div class="card-content">
+                    <h3>Waduk Darma</h3>
+                    <p>Danau indah untuk menikmati ketenangan.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="tb.jpeg" alt="Talaga Biru Cicerem">
+                <div class="card-content">
+                    <h3>Talaga Biru Cicerem</h3>
+                    <p>Danau jernih berwarna biru kehijauan.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="caption">
-            <h2 id="judul">Gunung Ciremai</h2>
-            <p id="deskripsi">Ikon alam Kabupaten Kuningan yang megah dan menawan.</p>
-        </div>
-    </div>
+        <a href="#" class="btn" onclick="pesan()">Kenali Kuningan Lebih Dekat</a>
+    </section>
 
     <footer>
-        <p>Jelajahi Keindahan Alam Kabupaten Kuningan</p>
+        <p>© 2025 Profil Wisata Kabupaten Kuningan</p>
     </footer>
 
     <script>
+
         function updateClock() {
             const now = new Date();
             const h = String(now.getHours()).padStart(2, "0");
@@ -244,7 +320,7 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-         function toggleMenu() {
+        function toggleMenu() {
             document.getElementById("navMenu").classList.toggle("active");
         }
 
@@ -254,25 +330,9 @@
                 .classList.toggle("scrolled", window.scrollY > 50);
         });
 
-        let index = 0;
-        const slides = document.querySelector(".slides");
-        const judul = document.getElementById("judul");
-        const deskripsi = document.getElementById("deskripsi");
-
-        const data = [
-            { j: "Gunung Ciremai", d: "Ikon alam Kabupaten Kuningan yang megah." },
-            { j: "Linggarjati", d: "Situs bersejarah perjuangan bangsa." },
-            { j: "Sangkanhurip", d: "Pemandian air panas alami." },
-            { j: "Waduk Darma", d: "Danau indah dan menenangkan." },
-            { j: "Talaga Biru Cicerem", d: "Danau biru jernih memikat." }
-        ];
-
-        setInterval(() => {
-            index = (index + 1) % data.length;
-            slides.style.transform = `translateX(-${index * 100}%)`;
-            judul.textContent = data[index].j;
-            deskripsi.textContent = data[index].d;
-        }, 3500);
+        function pesan() {
+            alert("Kabupaten Kuningan menanti kehadiranmu");
+        }
 
         document.querySelectorAll(".page-link").forEach(link => {
             link.addEventListener("click", function (e) {
@@ -288,6 +348,3 @@
 
 </body>
 </html>
-
-
-
