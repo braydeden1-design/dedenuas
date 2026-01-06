@@ -18,6 +18,26 @@
         body {
             background-color: #f5f7fa;
             color: #333;
+            transition: opacity 0.4s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-clock {
+            font-size: 0.9rem;
+            color: #a5d6a7;
+            background: rgba(0,0,0,0.35);
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 1px;
         }
 
         .header {
@@ -148,10 +168,10 @@
     <div class="nav-toggle" onclick="toggleMenu()">☰</div>
 
     <ul class="nav-menu" id="navMenu">
-        <li><a href="Index.html">Home</a></li>
-        <li><a href="Profile.html" class="active">Profile</a></li>
-        <li><a href="Gallery.html">Gallery</a></li>
-        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="index.html" class="page-link">Home</a></li>
+        <li><a href="Profile.html" class="page-link active">Profile</a></li>
+        <li><a href="Gallery.html" class="page-link">Gallery</a></li>
+        <li><a href="Contact.html" class="page-link">Contact</a></li>
     </ul>
 </nav>
 
@@ -223,8 +243,11 @@
 
 <script>
     function updateClock() {
-        document.getElementById("clock").innerText =
-            new Date().toLocaleTimeString();
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, "0");
+        const m = String(now.getMinutes()).padStart(2, "0");
+        const s = String(now.getSeconds()).padStart(2, "0");
+        document.getElementById("clock").innerText = `${h}:${m}:${s}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
@@ -241,6 +264,17 @@
     function pesan() {
         alert("Kabupaten Kuningan menanti kehadiranmu ");
     }
+    
+    document.querySelectorAll(".page-link").forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const tujuan = this.href;
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = tujuan;
+            }, 400);
+        });
+    });
 </script>
 
 </body>
