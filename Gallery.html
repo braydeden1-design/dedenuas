@@ -33,7 +33,7 @@
         .nav-clock {
             font-size: 0.9rem;
             color: #c8e6c9;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
             padding: 4px 10px;
             border-radius: 6px;
             letter-spacing: 1px;
@@ -58,8 +58,8 @@
             inset: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(0,0,0,0.55),
-                rgba(0,0,0,0.75)
+                rgba(0, 0, 0, 0.55),
+                rgba(0, 0, 0, 0.75)
             );
         }
 
@@ -72,8 +72,14 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .carousel {
@@ -82,7 +88,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .slides {
@@ -102,7 +108,7 @@
             bottom: 0;
             width: 100%;
             padding: 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: white;
         }
 
@@ -123,100 +129,102 @@
 
 <body>
 
-<nav class="navbar" id="navbar">
-    <div class="nav-left">
-        <span class="nav-logo">Kuningan</span>
-        <span class="nav-clock" id="clock">00:00:00</span>
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <span class="nav-logo">Kuningan</span>
+            <span class="nav-clock" id="clock">00:00:00</span>
+        </div>
+
+        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="page-link">Home</a></li>
+            <li><a href="profile.html" class="page-link">Profile</a></li>
+            <li><a href="gallery.html" class="page-link active">Gallery</a></li>
+            <li><a href="contact.html" class="page-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div class="header-content">
+            <h1>Gallery Wisata Kabupaten Kuningan</h1>
+            <h2>Pesona Alam & Sejarah Kuningan</h2>
+            <p>Kabupaten Kuningan menyimpan keindahan alam yang luar biasa.</p>
+        </div>
+    </header>
+
+    <div class="carousel">
+        <div class="slides">
+            <img src="crm.jpg" alt="Gunung Ciremai">
+            <img src="jati.jpg" alt="Linggarjati">
+            <img src="hurip.jpg" alt="Sangkanhurip">
+            <img src="darma.jpg" alt="Waduk Darma">
+            <img src="biru.jpg" alt="Talaga Biru Cicerem">
+        </div>
+
+        <div class="caption">
+            <h2 id="judul">Gunung Ciremai</h2>
+            <p id="deskripsi">Ikon alam Kabupaten Kuningan yang megah dan menawan.</p>
+        </div>
     </div>
 
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <footer>
+        <p>Jelajahi Keindahan Alam Kabupaten Kuningan</p>
+    </footer>
 
-    <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="page-link">Home</a></li>
-        <li><a href="Profile.html" class="page-link">Profile</a></li>
-        <li><a href="Gallery.html" class="page-link active">Gallery</a></li>
-        <li><a href="Contact.html" class="page-link">Contact</a></li>
-    </ul>
-</nav>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, "0");
+            const m = String(now.getMinutes()).padStart(2, "0");
+            const s = String(now.getSeconds()).padStart(2, "0");
+            document.getElementById("clock").textContent = `${h}:${m}:${s}`;
+        }
 
-<header class="header">
-    <div class="header-content">
-        <h1>Gallery Wisata Kabupaten Kuningan</h1>
-        <h2>Pesona Alam & Sejarah Kuningan</h2>
-        <p>Kabupaten Kuningan menyimpan keindahan alam yang luar biasa.</p>
-    </div>
-</header>
+        setInterval(updateClock, 1000);
+        updateClock();
 
-<div class="carousel">
-    <div class="slides">
-        <img src="crm.jpg">
-        <img src="jati.jpg">
-        <img src="hurip.jpg">
-        <img src="darma.jpg">
-        <img src="biru.jpg">
-    </div>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
 
-    <div class="caption">
-        <h2 id="judul">Gunung Ciremai</h2>
-        <p id="deskripsi">Ikon alam Kabupaten Kuningan yang megah dan menawan.</p>
-    </div>
-</div>
-
-<footer>
-    <p>Jelajahi Keindahan Alam Kabupaten Kuningan</p>
-</footer>
-
-<script>
-    function updateClock() {
-        const now = new Date();
-        const h = String(now.getHours()).padStart(2,"0");
-        const m = String(now.getMinutes()).padStart(2,"0");
-        const s = String(now.getSeconds()).padStart(2,"0");
-        document.getElementById("clock").innerText = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    function toggleMenu() {
-        document.getElementById("navMenu").classList.toggle("active");
-    }
-
-    window.addEventListener("scroll", () => {
-        document.getElementById("navbar")
-            .classList.toggle("scrolled", window.scrollY > 50);
-    });
-
-    let index = 0;
-    const slides = document.querySelector(".slides");
-    const judul = document.getElementById("judul");
-    const deskripsi = document.getElementById("deskripsi");
-
-    const data = [
-        { j: "Gunung Ciremai", d: "Ikon alam Kabupaten Kuningan yang megah." },
-        { j: "Linggarjati", d: "Situs bersejarah perjuangan bangsa." },
-        { j: "Sangkanhurip", d: "Pemandian air panas alami." },
-        { j: "Waduk Darma", d: "Danau indah dan menenangkan." },
-        { j: "Talaga Biru Cicerem", d: "Danau biru jernih memikat." }
-    ];
-
-    setInterval(() => {
-        index = (index + 1) % data.length;
-        slides.style.transform = `translateX(-${index * 100}%)`;
-        judul.innerText = data[index].j;
-        deskripsi.innerText = data[index].d;
-    }, 3500);
-
-    document.querySelectorAll(".page-link").forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const tujuan = this.href;
-            document.body.classList.add("fade-out");
-            setTimeout(() => {
-                window.location.href = tujuan;
-            }, 400);
+        window.addEventListener("scroll", () => {
+            document
+                .getElementById("navbar")
+                .classList.toggle("scrolled", window.scrollY > 50);
         });
-    });
-</script>
+
+        let index = 0;
+        const slides = document.querySelector(".slides");
+        const judul = document.getElementById("judul");
+        const deskripsi = document.getElementById("deskripsi");
+
+        const data = [
+            { j: "Gunung Ciremai", d: "Ikon alam Kabupaten Kuningan yang megah." },
+            { j: "Linggarjati", d: "Situs bersejarah perjuangan bangsa." },
+            { j: "Sangkanhurip", d: "Pemandian air panas alami." },
+            { j: "Waduk Darma", d: "Danau indah dan menenangkan." },
+            { j: "Talaga Biru Cicerem", d: "Danau biru jernih memikat." }
+        ];
+
+        setInterval(() => {
+            index = (index + 1) % data.length;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            judul.textContent = data[index].j;
+            deskripsi.textContent = data[index].d;
+        }, 3500);
+
+        document.querySelectorAll(".page-link").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const tujuan = this.href;
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = tujuan;
+                }, 400);
+            });
+        });
+    </script>
 
 </body>
 </html>
