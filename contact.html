@@ -26,22 +26,7 @@
             opacity: 0;
         }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-clock {
-            font-size: 0.9rem;
-            color: #c8e6c9;
-            background: rgba(0, 0, 0, 0.35);
-            padding: 4px 10px;
-            border-radius: 6px;
-            letter-spacing: 1px;
-        }
-
-        .navbar {
+.navbar {
             position: fixed;
             top: 0;
             width: 100%;
@@ -58,6 +43,22 @@
             background: rgba(0, 0, 0, 0.9);
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-clock {
+            font-size: 0.9rem;
+            font-weight: normal;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -69,11 +70,35 @@
             text-decoration: none;
         }
 
-        .active {
-            color: #4caf50;
-            font-weight: bold;
+        .nav-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
         }
 
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                transition: 0.4s;
+            }
+
+            .nav-menu.active {
+                height: 250px;
+                padding-top: 20px;
+            }
+        }
         .header {
             position: relative;
             width: 100%;
@@ -280,4 +305,5 @@
 
 </body>
 </html>
+
 
