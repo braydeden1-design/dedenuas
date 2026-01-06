@@ -1,294 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wisata Kabupaten Kuningan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Kabupaten Kuningan</title>
 
-<link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="nav.css">
 
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: "Segoe UI", sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
 
-body {
-background-color: darkgrey;
-transition: opacity 0.4s ease;
-}
+        body {
+            background-color: darkgrey;
+        }
 
-body.fade-out {
-opacity: 0;
-}
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            min-height: 420px;
+            background-image: url("nb.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.banner {
-position: relative;
-width: 100%;
-height: 80vh;
-min-height: 420px;
-background-image: url("nb.jpg");
-background-size: cover;
-background-position: center;
-display: flex;
-align-items: center;
-justify-content: center;
-}
+        .banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.75),
+                rgba(0, 0, 0, 0.45)
+            );
+        }
 
-.banner::before {
-content: "";
-position: absolute;
-inset: 0;
-background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.45));
-}
+        .banner-content {
+            position: relative;
+            color: white;
+            text-align: center;
+            animation: slideFade 1.2s ease;
+        }
 
-.banner-content {
-position: relative;
-color: white;
-text-align: center;
-animation: slideFade 1.2s ease;
-}
+        .banner-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
 
-.banner-content h1 {
-font-size: 3rem;
-margin-bottom: 15px;
-}
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@keyframes slideFade {
-from { opacity: 0; transform: translateY(40px); }
-to { opacity: 1; transform: translateY(0); }
-}
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: 0.4s;
+            z-index: 1000;
+        }
 
-.navbar {
-position: fixed;
-top: 0;
-width: 100%;
-padding: 16px 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: transparent;
-transition: 0.4s;
-z-index: 1000;
-}
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+        }
 
-.navbar.scrolled {
-background: rgba(0,0,0,0.9);
-}
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: bold;
+        }
 
-.nav-left {
-display: flex;
-align-items: center;
-gap: 14px;
-}
+        .nav-clock {
+            font-size: 0.9rem;
+            font-weight: normal;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
 
-.nav-logo {
-color: white;
-font-weight: bold;
-font-size: 1.6rem;
-}
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
 
-.nav-clock {
-color: #4caf50;
-font-size: 0.95rem;
-font-weight: 600;
-padding: 4px 10px;
-border-radius: 6px;
-background: rgba(0,0,0,0.4);
-letter-spacing: 1px;
-}
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+        }
 
-.nav-menu {
-display: flex;
-list-style: none;
-gap: 30px;
-}
+        .nav-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
 
-.nav-menu a {
-color: white;
-text-decoration: none;
-}
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
 
-.nav-toggle {
-display: none;
-font-size: 1.8rem;
-color: white;
-cursor: pointer;
-}
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                transition: 0.4s;
+            }
 
-@media (max-width: 768px) {
-.nav-toggle { display: block; }
+            .nav-menu.active {
+                height: 250px;
+                padding-top: 20px;
+            }
+        }
 
-.nav-menu {
-position: absolute;
-top: 70px;
-right: 0;
-width: 100%;
-height: 0;
-overflow: hidden;
-flex-direction: column;
-background: rgba(0,0,0,0.95);
-transition: 0.4s;
-}
+        .container {
+            padding: 20px;
+            text-align: center;
+            background: #1b5e20;
+            color: white;
+        }
 
-.nav-menu.active {
-height: 250px;
-padding-top: 20px;
-}
-}
+        .wisata {
+            margin-top: 20px;
+            background: #f4f4f4;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+        }
 
-.container {
-padding: 20px;
-text-align: center;
-background: #1b5e20;
-color: white;
-}
+        .wisata img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
 
-.wisata {
-margin-top: 20px;
-background: #f4f4f4;
-color: black;
-padding: 15px;
-border-radius: 8px;
-}
-
-.wisata img {
-width: 100%;
-max-width: 500px;
-border-radius: 8px;
-}
-
-footer {
-background: #1b5e20;
-color: white;
-padding: 10px;
-text-align: center;
-margin-top: 10px;
-}
-</style>
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="navbar" id="navbar">
-  <div class="nav-left">
-    <span class="nav-logo">Kuningan</span>
-    <span class="nav-clock" id="clock">00:00:00</span>
-  </div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <span>Kuningan</span>
+            <span class="nav-clock" id="clock">00:00:00</span>
+        </div>
 
-  <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
 
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="index.html" class="page-link active">Home</a></li>
-    <li><a href="profile.html" class="page-link">Profile</a></li>
-    <li><a href="gallery.html" class="page-link">Gallery</a></li>
-    <li><a href="contact.html" class="page-link">Contact</a></li>
-  </ul>
-</nav>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-<section class="banner">
-<div class="banner-content">
-<h1>Selamat Datang di Wisata Kabupaten Kuningan</h1>
-<p>Jelajahi Keindahan Alam Kuningan</p>
-</div>
-</section>
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Selamat Datang di Wisata Kabupaten Kuningan</h1>
+            <p>Jelajahi Keindahan Alam Kuningan</p>
+        </div>
+    </section>
 
-<div class="container">
-<h2>Pilih Tempat Wisata</h2>
+    <div class="container">
+        <h2>Pilih Tempat Wisata</h2>
 
-<select onchange="pilihWisata(this.value)">
-<option value="">-- Pilih Wisata --</option>
-<option value="ciremai">Gunung Ciremai</option>
-<option value="linggarjati">Linggarjati</option>
-<option value="sangkanhurip">Sangkanhurip</option>
-<option value="waduk">Waduk Darma</option>
-<option value="talaga">Talaga Biru Cicerem</option>
-</select>
+        <select onchange="pilihWisata(this.value)">
+            <option value="">-- Pilih Wisata --</option>
+            <option value="ciremai">Gunung Ciremai</option>
+            <option value="linggarjati">Linggarjati</option>
+            <option value="sangkanhurip">Sangkanhurip</option>
+            <option value="waduk">Waduk Darma</option>
+            <option value="talaga">Talaga Biru Cicerem</option>
+        </select>
 
-<div id="hasil" class="wisata"></div>
-</div>
+        <div id="hasil" class="wisata"></div>
+    </div>
 
-<footer>
-<p>&copy; Deden_Wijaya - 2026</p>
-</footer>
+    <footer>
+        <p>&copy; Deden_Wijaya - 2026</p>
+    </footer>
 
-<script>
-function toggleMenu() {
-document.getElementById("navMenu").classList.toggle("active");
-}
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
 
-window.addEventListener("scroll", () => {
-document.getElementById("navbar")
-.classList.toggle("scrolled", window.scrollY > 50);
-});
+        window.addEventListener("scroll", () => {
+            document
+                .getElementById("navbar")
+                .classList.toggle("scrolled", window.scrollY > 50);
+        });
 
-function updateClock() {
-const now = new Date();
-const h = String(now.getHours()).padStart(2, '0');
-const m = String(now.getMinutes()).padStart(2, '0');
-const s = String(now.getSeconds()).padStart(2, '0');
-document.getElementById("clock").innerText = `${h}:${m}:${s}`;
-}
-setInterval(updateClock, 1000);
-updateClock();
+        function pilihWisata(wisata) {
+            let hasil = document.getElementById("hasil");
 
-document.querySelectorAll(".page-link").forEach(link => {
-link.addEventListener("click", function(e) {
-e.preventDefault();
-const tujuan = this.href;
-document.body.classList.add("fade-out");
-setTimeout(() => {
-window.location.href = tujuan;
-}, 400);
-});
-});
+            if (wisata === "ciremai") {
+                hasil.innerHTML = `
+                    <h3>Gunung Ciremai</h3>
+                    <img src="Gunung_Ciremai.jpg" alt="Gunung Ciremai">
+                    <p>Gunung Ciremai adalah gunung tertinggi di Jawa Barat.</p>
+                `;
+            } else if (wisata === "linggarjati") {
+                hasil.innerHTML = `
+                    <h3>Linggarjati</h3>
+                    <img src="linggar.jpg" alt="Linggarjati">
+                    <p>Wisata alam dan sejarah Perundingan Linggarjati.</p>
+                `;
+            } else if (wisata === "sangkanhurip") {
+                hasil.innerHTML = `
+                    <h3>Sangkanhurip</h3>
+                    <img src="sangkan.jpg" alt="Sangkanhurip">
+                    <p>Pemandian air panas alami.</p>
+                `;
+            } else if (wisata === "waduk") {
+                hasil.innerHTML = `
+                    <h3>Waduk Darma</h3>
+                    <img src="waduk.jpg" alt="Waduk Darma">
+                    <p>Danau buatan dengan panorama indah.</p>
+                `;
+            } else if (wisata === "talaga") {
+                hasil.innerHTML = `
+                    <h3>Talaga Biru Cicerem</h3>
+                    <img src="telaga.jpg" alt="Talaga Biru Cicerem">
+                    <p>Air jernih kebiruan yang eksotis.</p>
+                `;
+            } else {
+                hasil.innerHTML = "";
+            }
+        }
 
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, "0");
+            const m = String(now.getMinutes()).padStart(2, "0");
+            const s = String(now.getSeconds()).padStart(2, "0");
+            document.getElementById("clock").textContent = `${h}:${m}:${s}`;
+        }
 
-function pilihWisata(wisata) {
-let hasil = document.getElementById("hasil");
-
-if (wisata === "ciremai") {
-hasil.innerHTML = `
-<h3>Gunung Ciremai</h3>
-<img src="Gunung_Ciremai.jpg">
-<p>Gunung Ciremai adalah gunung tertinggi di Jawa Barat.</p>`;
-}
-
-else if (wisata === "linggarjati") {
-hasil.innerHTML = `
-<h3>Linggarjati</h3>
-<img src="linggar.jpg">
-<p>Wisata alam dan sejarah Perundingan Linggarjati.</p>`;
-}
-
-else if (wisata === "sangkanhurip") {
-hasil.innerHTML = `
-<h3>Sangkanhurip</h3>
-<img src="sangkan.jpg">
-<p>Pemandian air panas alami.</p>`;
-}
-
-else if (wisata === "waduk") {
-hasil.innerHTML = `
-<h3>Waduk Darma</h3>
-<img src="waduk.jpg">
-<p>Danau buatan dengan panorama indah.</p>`;
-}
-
-else if (wisata === "talaga") {
-hasil.innerHTML = `
-<h3>Talaga Biru Cicerem</h3>
-<img src="telaga.jpg">
-<p>Air jernih kebiruan yang eksotis.</p>`;
-}
-
-else {
-hasil.innerHTML = "";
-}
-}
-</script>
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 
 </body>
 </html>
