@@ -35,10 +35,43 @@
         .nav-clock {
             font-size: 0.9rem;
             color: #c8e6c9;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
             padding: 4px 10px;
             border-radius: 6px;
             letter-spacing: 1px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: 0.4s;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .active {
+            color: #4caf50;
+            font-weight: bold;
         }
 
         .header {
@@ -75,8 +108,14 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -100,11 +139,12 @@
             }
         }
 
-        .info, .form {
+        .info,
+        .form {
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
         }
 
         .form input,
@@ -126,39 +166,6 @@
             cursor: pointer;
         }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: transparent;
-            transition: 0.4s;
-            z-index: 1000;
-        }
-
-        .navbar.scrolled {
-            background: rgba(0,0,0,0.9);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .active {
-            color: #4caf50;
-            font-weight: bold;
-        }
-
         footer {
             background-color: #1b5e20;
             color: white;
@@ -173,100 +180,103 @@
 
 <body>
 
-<nav class="navbar" id="navbar">
-    <div class="nav-left">
-        <span class="nav-logo">Kuningan</span>
-        <span class="nav-clock" id="clock">00:00:00</span>
-    </div>
-
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-
-    <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="page-link">Home</a></li>
-        <li><a href="Profile.html" class="page-link">Profile</a></li>
-        <li><a href="Gallery.html" class="page-link">Gallery</a></li>
-        <li><a href="Contact.html" class="page-link active">Contact</a></li>
-    </ul>
-</nav>
-
-<header class="header">
-    <div class="header-content">
-        <h1>Hubungi Kami</h1>
-        <p>Kami siap membantu perjalanan wisatamu di Kabupaten Kuningan.</p>
-    </div>
-</header>
-
-<div class="container">
-    <div class="intro">
-        <h2>Mari Terhubung dengan Kuningan</h2>
-        <p>Dari Gunung Ciremai hingga Talaga Biru Cicerem.</p>
-    </div>
-
-    <div class="content">
-        <div class="info">
-            <h3>Informasi Kontak</h3>
-            <p>📍 Kabupaten Kuningan, Jawa Barat</p>
-            <p>📧 wisata@kuningan.go.id</p>
-            <p>📞 (0232) 123456</p>
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <span class="nav-logo">Kuningan</span>
+            <span class="nav-clock" id="clock">00:00:00</span>
         </div>
 
-        <div class="form">
-            <h3>Kirim Pesan</h3>
-            <input type="text" id="nama" placeholder="Nama Lengkap">
-            <input type="email" id="email" placeholder="Email">
-            <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda..."></textarea>
-            <button onclick="kirimPesan()">Kirim Pesan</button>
+        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="page-link">Home</a></li>
+            <li><a href="profile.html" class="page-link">Profile</a></li>
+            <li><a href="gallery.html" class="page-link">Gallery</a></li>
+            <li><a href="contact.html" class="page-link active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div class="header-content">
+            <h1>Hubungi Kami</h1>
+            <p>Kami siap membantu perjalanan wisatamu di Kabupaten Kuningan.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Mari Terhubung dengan Kuningan</h2>
+            <p>Dari Gunung Ciremai hingga Talaga Biru Cicerem.</p>
+        </div>
+
+        <div class="content">
+            <div class="info">
+                <h3>Informasi Kontak</h3>
+                <p>📍 Kabupaten Kuningan, Jawa Barat</p>
+                <p>📧 wisata@kuningan.go.id</p>
+                <p>📞 (0232) 123456</p>
+            </div>
+
+            <div class="form">
+                <h3>Kirim Pesan</h3>
+                <input type="text" id="nama" placeholder="Nama Lengkap">
+                <input type="email" id="email" placeholder="Email">
+                <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda..."></textarea>
+                <button onclick="kirimPesan()">Kirim Pesan</button>
+            </div>
         </div>
     </div>
-</div>
 
-<footer>
-    <p> Wisata Kabupaten Kuningan – Alam, Sejarah, dan Harmoni </p>
-</footer>
+    <footer>
+        <p>Wisata Kabupaten Kuningan – Alam, Sejarah, dan Harmoni</p>
+    </footer>
 
-<script>
-    function updateClock() {
-        const now = new Date();
-        const h = String(now.getHours()).padStart(2,"0");
-        const m = String(now.getMinutes()).padStart(2,"0");
-        const s = String(now.getSeconds()).padStart(2,"0");
-        document.getElementById("clock").innerText = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    <script>
 
-    function toggleMenu() {
-        document.getElementById("navMenu").classList.toggle("active");
-    }
-
-    window.addEventListener("scroll", () => {
-        document.getElementById("navbar")
-            .classList.toggle("scrolled", window.scrollY > 50);
-    });
-
-    document.querySelectorAll(".page-link").forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const tujuan = this.href;
-            document.body.classList.add("fade-out");
-            setTimeout(() => {
-                window.location.href = tujuan;
-            }, 400);
-        });
-    });
-
-    function kirimPesan() {
-        let nama = document.getElementById("nama").value;
-        let email = document.getElementById("email").value;
-        let pesan = document.getElementById("pesan").value;
-
-        if (nama === "" || email === "" || pesan === "") {
-            alert("Mohon lengkapi semua data sebelum mengirim pesan.");
-        } else {
-            alert("Terima kasih, " + nama + "!");
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, "0");
+            const m = String(now.getMinutes()).padStart(2, "0");
+            const s = String(now.getSeconds()).padStart(2, "0");
+            document.getElementById("clock").textContent = `${h}:${m}:${s}`;
         }
-    }
-</script>
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+
+        window.addEventListener("scroll", () => {
+            document
+                .getElementById("navbar")
+                .classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        document.querySelectorAll(".page-link").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const tujuan = this.href;
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = tujuan;
+                }, 400);
+            });
+        });
+
+        function kirimPesan() {
+            const nama = document.getElementById("nama").value;
+            const email = document.getElementById("email").value;
+            const pesan = document.getElementById("pesan").value;
+
+            if (nama === "" || email === "" || pesan === "") {
+                alert("Mohon lengkapi semua data sebelum mengirim pesan.");
+            } else {
+                alert("Terima kasih, " + nama + "!");
+            }
+        }
+    </script>
 
 </body>
 </html>
